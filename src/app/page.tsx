@@ -8,7 +8,6 @@ import { Features } from "@/components/sections/Features";
 import { Screenshots } from "@/components/sections/Screenshots";
 import { QuickStart } from "@/components/sections/QuickStart";
 import { Download } from "@/components/sections/Download";
-import { CTA } from "@/components/sections/CTA";
 import { Footer } from "@/components/sections/Footer";
 
 export default function Home() {
@@ -23,7 +22,6 @@ export default function Home() {
         <Screenshots />
         <QuickStart />
         <Download />
-        <CTA />
       </main>
       <Footer />
     </div>
