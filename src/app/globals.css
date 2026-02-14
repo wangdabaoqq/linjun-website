@@ -1,26 +1,210 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  
+
+  --color-cream-50: var(--bg-primary);
+  --color-cream-100: var(--bg-secondary);
+  --color-cream-200: var(--bg-tertiary);
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #f5f5f5;
+    --foreground: #3d4043;
+    --color-fd-primary: var(--primary);
+    --fd-primary: var(--primary);
+    --card: #ffffff;
+    --card-foreground: #3d4043;
+    --popover: #ffffff;
+    --popover-foreground: #3d4043;
+    --primary: #7a9e7e;
+    --primary-foreground: #ffffff;
+    --secondary: #f0ede6;
+    --secondary-foreground: #3d4043;
+    --muted: #f0ede6;
+    --muted-foreground: rgba(61, 64, 67, 0.62);
+    --accent: #d4b896;
+    --accent-foreground: #ffffff;
+    --destructive: #d98b85;
+    --destructive-foreground: #ffffff;
+    --border: rgba(180, 175, 165, 0.2);
+    --input: rgba(180, 175, 165, 0.2);
+    --ring: #7a9e7e;
+    --radius: 0.75rem;
+
+    --bg-primary: #f7f5f0;
+    --bg-secondary: #f0ede6;
+    --bg-tertiary: #e8e4db;
+  }
+
+  .dark {
+    --background: #0a0a0f;
+    --foreground: #e8e8ed;
+    --card: #12121a;
+    --card-foreground: #e8e8ed;
+    --popover: #12121a;
+    --popover-foreground: #e8e8ed;
+    --primary: #3b82f6;
+    --primary-foreground: #ffffff;
+    --secondary: #1a1a25;
+    --secondary-foreground: #e8e8ed;
+    --muted: #1a1a25;
+    --muted-foreground: rgba(232, 232, 237, 0.6);
+    --accent: #ec4899;
+    --accent-foreground: #ffffff;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --border: rgba(255, 255, 255, 0.08);
+    --input: rgba(255, 255, 255, 0.08);
+    --ring: #3b82f6;
+
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #12121a;
+    --bg-tertiary: #1a1a25;
   }
 }
 
-body {
-  background: var(--background);
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--muted-foreground);
+  opacity: 0.5;
+  border-radius: 9999px;
+  border: 4px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--foreground);
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Fumadocs Docs Layout Overrides */
+.fd-layout {
+  --fd-sidebar-width: 280px;
+  --color-fd-primary: var(--primary);
+  --fd-primary: var(--primary);
+  --background: #f5f5f5;
+  background-color: var(--background);
+}
+
+.dark .fd-layout {
+  --background: #0a0a0f;
+}
+
+.fd-sidebar {
+  font-size: 0.875rem;
+}
+
+.fd-prose {
+  max-width: 80ch;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+.fd-prose h1,
+.fd-prose h2,
+.fd-prose h3,
+.fd-prose h4 {
+  color: var(--foreground);
+}
+
+.fd-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.fd-prose th,
+.fd-prose td {
+  border: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.fd-prose thead th {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.fd-prose a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.fd-prose a:hover {
+  text-decoration: underline;
+}
+
+.fd-toc {
+  font-size: 0.75rem;
+}
+
+.fd-toc-link {
+  color: var(--muted-foreground);
+}
+
+.fd-toc-link:hover {
+  color: var(--foreground);
+}
+
+.fd-nav {
+  background: var(--background);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Sidebar active item green override */
+.fd-sidebar [data-active='true'] {
+  color: var(--primary) !important;
+}
+
+.fd-sidebar [data-active='true']::before {
+  background-color: var(--primary) !important;
 }

@@ -29,8 +29,27 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deploy on Cloudflare (OpenNext)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is configured for OpenNext + Cloudflare Workers.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Login to Cloudflare:
+
+```bash
+npx wrangler login
+```
+
+2. Preview the Worker runtime locally:
+
+```bash
+npm run preview
+```
+
+3. Deploy:
+
+```bash
+npm run deploy
+```
+
+If you need local development environment variables for Workers preview,
+copy `.dev.vars.example` to `.dev.vars` and edit values.
