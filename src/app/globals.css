@@ -183,18 +183,6 @@
   text-decoration: underline;
 }
 
-.fd-toc {
-  font-size: 0.75rem;
-}
-
-.fd-toc-link {
-  color: var(--muted-foreground);
-}
-
-.fd-toc-link:hover {
-  color: var(--foreground);
-}
-
 .fd-nav {
   background: var(--background);
   border-bottom: 1px solid var(--border);

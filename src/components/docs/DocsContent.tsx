@@ -1,9 +1,11 @@
 import ReactMarkdown from "react-markdown";
+import React from "react";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { cn } from "@/lib/utils";
 import { Card, Cards } from "fumadocs-ui/components/card";
 import { Download, Zap, BookOpen, Settings, LayoutDashboard, Terminal, Users, Wrench, Code } from "lucide-react";
+import { slugifyHeading } from "@/lib/docs-toc";
 
 interface DocsContentProps {
   content: string;
@@ -11,6 +13,33 @@ interface DocsContentProps {
 }
 
 export function DocsContent({ content, className }: DocsContentProps) {
+  const headingIds = new Map<string, number>();
+
+  const getText = (node: React.ReactNode): string => {
+    if (typeof node === "string" || typeof node === "number") return String(node);
+    if (Array.isArray(node)) return node.map(getText).join("");
+    if (React.isValidElement(node)) {
+      const element = node as React.ReactElement<{ children?: React.ReactNode }>;
+      return getText(element.props.children);
+    }
+    return "";
+  };
+
+  const makeHeading = (Tag: "h1" | "h2" | "h3" | "h4") =>
+    ({ children, ...props }: any) => {
+      const text = getText(children);
+      const base = slugifyHeading(text);
+      const count = (headingIds.get(base) ?? 0) + 1;
+      headingIds.set(base, count);
+      const id = props.id ?? (count === 1 ? base : `${base}-${count}`);
+
+      return (
+        <Tag id={id} {...props} className="scroll-m-20">
+          {children}
+        </Tag>
+      );
+    };
+
   const components: any = {
     cards: (props: any) => <div className="not-prose my-6"><Cards {...props} /></div>,
     card: (props: any) => {
@@ -27,10 +56,10 @@ export function DocsContent({ content, className }: DocsContentProps) {
       };
       return <Card {...props} icon={icons[props.icon] || props.icon} />;
     },
-    h1: (props: any) => <h1 {...props} className="scroll-m-20" />,
-    h2: (props: any) => <h2 {...props} className="scroll-m-20" />,
-    h3: (props: any) => <h3 {...props} className="scroll-m-20" />,
-    h4: (props: any) => <h4 {...props} className="scroll-m-20" />,
+    h1: makeHeading("h1"),
+    h2: makeHeading("h2"),
+    h3: makeHeading("h3"),
+    h4: makeHeading("h4"),
   };
 
   return (

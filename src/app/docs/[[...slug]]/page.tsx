@@ -6,6 +6,7 @@ import { DocsPage, DocsDescription, DocsTitle, DocsBody } from "fumadocs-ui/layo
 import { DocsContent } from "@/components/docs/DocsContent";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { extractToc } from "@/lib/docs-toc";
 
 interface PageProps {
   params: Promise<{ slug?: string[] }>;
@@ -106,9 +107,17 @@ export default async function DocPage(props: PageProps) {
   const lang = normalizedSlug[0] === "zh" ? "zh" : "en";
   const defaultTitle = lang === "zh" ? "文档" : "Documentation";
   const { prev, next } = findAdjacentPages(normalizedSlug, lang);
+  const toc = extractToc(doc.content);
 
   return (
-    <DocsPage footer={{ enabled: false }}>
+    <DocsPage
+      toc={toc}
+      tableOfContent={{
+        enabled: true,
+        style: "clerk",
+      }}
+      footer={{ enabled: false }}
+    >
       <DocsTitle>{doc.frontmatter.title || defaultTitle}</DocsTitle>
       {doc.frontmatter.description && (
         <DocsDescription>{doc.frontmatter.description}</DocsDescription>

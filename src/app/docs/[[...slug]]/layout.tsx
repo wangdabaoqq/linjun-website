@@ -69,6 +69,7 @@ export default async function DocsLayout({
     tableOfContent: {
       enabled: true,
       heading: lang === 'zh' ? '本页内容' : 'On This Page',
+      style: 'clerk',
     },
     sidebar: {
       collapsible: true,
