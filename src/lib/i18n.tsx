@@ -189,7 +189,9 @@ export const translations: Record<Language, Translations> = {
         product: "Product",
         resources: "Resources",
         legal: "Legal",
-        copyright: "© 2024 LinJun. All rights reserved.",
+        copyright: "© 2026 LinJun.",
+        author: "Made by wangdabaoqq",
+        license: "MIT License • Open Source",
       },
       changelog: {
         title: "Changelog",
@@ -307,7 +309,9 @@ export const translations: Record<Language, Translations> = {
         product: "产品",
         resources: "资源",
         legal: "法律",
-        copyright: "© 2024 LinJun. 保留所有权利。",
+        copyright: "© 2026 LinJun.",
+        author: "由 wangdabaoqq 打造",
+        license: "MIT 许可证 • 开源",
       },
       changelog: {
         title: "更新日志",

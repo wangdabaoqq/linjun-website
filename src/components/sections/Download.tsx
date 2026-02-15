@@ -70,11 +70,9 @@ export function Download() {
                 {platform.desc}
               </p>
               
-              <a href={platform.link} className="mt-auto w-full">
-                <Button className="w-full justify-center">
-                  {t.download.button} {platform.name}
-                </Button>
-              </a>
+              <Button href={platform.link} className="mt-auto w-full justify-center">
+                {t.download.button} {platform.name}
+              </Button>
             </motion.div>
           ))}
         </div>

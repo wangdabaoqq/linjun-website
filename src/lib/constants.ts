@@ -12,14 +12,13 @@ import {
 
 export const SITE_CONFIG = {
   name: "LinJun",
-  description: "The ultimate AI proxy management desktop application.",
   version: "1.0.6",
   github: "https://github.com/wangdabaoqq/LinJun",
   docs: "https://linjun-docs.940703.xyz/",
   download: {
-    mac: "https://github.com/wangdabaoqq/LinJun/releases/latest/download/LinJun-mac.dmg",
-    win: "https://github.com/wangdabaoqq/LinJun/releases/latest/download/LinJun-setup.exe",
-    linux: "https://github.com/wangdabaoqq/LinJun/releases/latest/download/LinJun-linux.AppImage",
+    mac: "https://github.com/wangdabaoqq/LinJun/releases/latest/download/LinJun-1.0.6-arm64.zip",
+    win: "https://github.com/wangdabaoqq/LinJun/releases/latest/download/LinJun-1.0.6-x64.exe",
+    linux: "https://github.com/wangdabaoqq/LinJun/releases/latest/download/LinJun-1.0.6-x86_64.AppImage",
   },
 };
 
