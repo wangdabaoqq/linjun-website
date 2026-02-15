@@ -85,6 +85,8 @@ type Translations = {
       resources: string;
       legal: string;
       copyright: string;
+      author: string;
+      license: string;
     };
     changelog: {
       title: string;

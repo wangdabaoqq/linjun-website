@@ -1,31 +1,32 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Github, Sun, Moon, Monitor } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export function CombinedSwitcher({ lang }: { lang: "en" | "zh" }) {
+export function CombinedSwitcher({ lang: initialLang }: { lang: "en" | "zh" }) {
   const { theme, setTheme } = useTheme();
-  const router = useRouter();
   const pathname = usePathname();
+  const [currentLang, setCurrentLang] = useState(initialLang);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+    setCurrentLang(pathname.startsWith("/docs/zh") ? "zh" : "en");
+  }, [pathname]);
 
   const switchLang = (newLang: "en" | "zh") => {
-    if (newLang === lang) return;
+    if (newLang === currentLang) return;
     const currentPath = pathname || "/docs";
     let newPath = currentPath;
     if (currentPath.startsWith("/docs/zh") || currentPath.startsWith("/docs/en")) {
-      newPath = currentPath.replace(/\/docs\/(zh|en)/, `/docs/${newLang}`);
+      newPath = currentPath.replace(/\/docs\/(zh|en)(?=\/|$)/, `/docs/${newLang}`);
     } else {
       newPath = `/docs/${newLang}`;
     }
-    router.push(newPath);
+    window.location.href = newPath;
   };
 
   return (
@@ -48,7 +49,7 @@ export function CombinedSwitcher({ lang }: { lang: "en" | "zh" }) {
           onClick={() => switchLang("en")}
           className={cn(
             "px-2 py-1 text-[10px] font-bold rounded-full transition-colors",
-            lang === "en"
+            currentLang === "en"
               ? "bg-fd-accent text-fd-accent-foreground"
               : "text-fd-muted-foreground hover:text-fd-foreground"
           )}
@@ -59,7 +60,7 @@ export function CombinedSwitcher({ lang }: { lang: "en" | "zh" }) {
           onClick={() => switchLang("zh")}
           className={cn(
             "px-2 py-1 text-[10px] font-bold rounded-full transition-colors",
-            lang === "zh"
+            currentLang === "zh"
               ? "bg-fd-accent text-fd-accent-foreground"
               : "text-fd-muted-foreground hover:text-fd-foreground"
           )}
