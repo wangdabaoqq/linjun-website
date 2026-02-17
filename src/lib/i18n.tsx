@@ -91,11 +91,6 @@ type Translations = {
     changelog: {
       title: string;
       subtitle: string;
-      versions: {
-        date: string;
-        version: string;
-        changes: string[];
-      }[];
     };
     docs: {
       search: string;
@@ -198,26 +193,6 @@ export const translations: Record<Language, Translations> = {
       changelog: {
         title: "Changelog",
         subtitle: "See what's new in LinJun.",
-        versions: [
-          {
-            date: "Feb 14, 2026",
-            version: "v1.0.6",
-            changes: [
-              "Improved stability and performance",
-              "Enhanced quota tracking accuracy",
-              "Fixed minor UI bugs",
-            ],
-          },
-          {
-            date: "Jan 20, 2026",
-            version: "v1.0.5",
-            changes: [
-              "Added support for Antigravity provider",
-              "Implemented Round Robin routing strategy",
-              "Updated electron framework",
-            ],
-          },
-        ],
       },
       docs: {
         search: "Search docs...",
@@ -318,26 +293,6 @@ export const translations: Record<Language, Translations> = {
       changelog: {
         title: "更新日志",
         subtitle: "了解霖君的最新动态。",
-        versions: [
-          {
-            date: "2026年2月14日",
-            version: "v1.0.6",
-            changes: [
-              "提高稳定性和性能",
-              "增强额度追踪准确性",
-              "修复了一些 UI bug",
-            ],
-          },
-          {
-            date: "2026年1月20日",
-            version: "v1.0.5",
-            changes: [
-              "新增 Antigravity 提供商支持",
-              "实现轮询路由策略",
-              "更新 electron 框架",
-            ],
-          },
-        ],
       },
       docs: {
         search: "搜索文档...",

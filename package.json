@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "docs:manifest": "node scripts/generate-docs-manifest.mjs",
-    "build": "npm run docs:manifest && next build",
+    "docs:changelog": "node scripts/fetch-releases.mjs",
+    "build": "npm run docs:changelog && npm run docs:manifest && next build",
     "start": "next start",
     "lint": "eslint",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
