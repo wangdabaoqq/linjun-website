@@ -54,14 +54,6 @@ description: 欢迎使用霖君官方文档，跨平台 AI 代理管理工具。
 -   **[Codex CLI](/docs/zh/agents/overview)**：通过代理使用 OpenAI Codex。
 -   **[Gemini CLI](/docs/zh/agents/overview)**：通过 CLI 访问 Google Gemini。
 
-### IDE 配额监控
-
--   **[Cursor](/docs/zh/dashboard/quota)**：在 Cursor IDE 内监控 AI 使用情况。
--   **[Trae](/docs/zh/dashboard/quota)**：追踪 Trae IDE 中的 AI 消耗。
--   **[Windsurf](/docs/zh/dashboard/quota)**：监控 Windsurf IDE 中的使用情况。
-
-> **注意**：IDE 集成仅用于配额监控，不能作为代理提供商。
-
 ## 开发者资源
 
 -   **[架构设计](/docs/zh/agents/overview)**：了解应用底层运行机制。

@@ -69,10 +69,6 @@ export const ECOSYSTEM = {
     { name: "Kiro", type: "OAuth", icon: "aws" },
     { name: "GitHub Copilot", type: "OAuth", icon: "github" },
   ],
-  ides: [
-    { name: "Cursor", icon: "cursor" },
-    { name: "Trae", icon: "trae" },
-  ],
   agents: [
     { name: "Claude Code", icon: "claude" },
     { name: "Codex CLI", icon: "openai" },

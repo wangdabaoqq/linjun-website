@@ -54,14 +54,6 @@ Connect LinJun to your favorite tools:
 -   **[Codex CLI](/docs/en/agents/overview)**: Use OpenAI Codex through the proxy.
 -   **[Gemini CLI](/docs/en/agents/overview)**: Access Google Gemini via CLI.
 
-### IDE Quota Monitoring
-
--   **[Cursor](/docs/en/dashboard/quota)**: Monitor AI usage within Cursor IDE.
--   **[Trae](/docs/en/dashboard/quota)**: Track AI consumption in Trae IDE.
--   **[Windsurf](/docs/en/dashboard/quota)**: Monitor usage in Windsurf IDE.
-
-> **Note**: IDE integrations are for quota monitoring only and cannot be used as proxy providers.
-
 ## Developer Resources
 
 -   **[Architecture](/docs/en/agents/overview)**: How the app works under the hood.

@@ -52,39 +52,6 @@ export function Ecosystem() {
           </div>
 
           <div>
-            <h3 className="text-center text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-4">
-              {language === 'en' ? 'IDE Quota Tracking (Monitor Only)' : 'IDE 配额追踪 (仅限监控)'}
-            </h3>
-            <p className="text-center text-sm text-zinc-500 mb-8 max-w-xl mx-auto">
-              {language === 'en' 
-                ? 'These IDEs are only used for quota usage monitoring. They cannot be used as providers for the proxy.' 
-                : '这些 IDE 仅用于配额使用情况监控。它们不能用作代理的提供商。'}
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              {ECOSYSTEM.ides.map((item, index) => {
-                const Icon = Icons[item.icon as IconKey] || Icons.bot;
-                return (
-                  <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    whileHover={{ 
-                      y: -2,
-                      backgroundColor: "var(--color-cream-100)"
-                    }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.2 }}
-                    className="flex items-center gap-3 rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-zinc-900/5 dark:bg-zinc-800 dark:ring-white/10 cursor-default transition-all hover:shadow-md hover:ring-primary/20"
-                  >
-                    <Icon className="h-5 w-5" />
-                    <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">{item.name}</span>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-
-          <div>
             <h3 className="text-center text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-8">
               {language === 'en' ? 'Compatible CLI Agents' : '兼容的 CLI 代理'}
             </h3>
